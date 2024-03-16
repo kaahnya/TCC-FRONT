@@ -1,7 +1,9 @@
 'use client'
+//utilizei o use client porque estou usando os estados do react
 
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+//para mandar requisições ao back utilizei a biblioteca axios
 
 export default function Home(){
   const [users, setUsers] = useState([])
@@ -13,6 +15,7 @@ export default function Home(){
     const response = await axios.get("http://localhost:3000/users")
     return response.data
   }
+  //obter os usuarios atraves da biblioteca axios
 
   const handleInputChange = (event) => {
     if(event.target.type==='file'){
@@ -25,6 +28,8 @@ export default function Home(){
       }))
     }
   }
+  /*função para lidar com a mudança dos valores dentro dos input, se o input for do tipo "file" ele guardara 
+  a imagem, caso não, guardara o valor normalmente*/
 
   const handleSubmit = async () => {
     const formData = new FormData()
@@ -43,6 +48,8 @@ export default function Home(){
       },
     });
   } 
+  /*utilizei o formData para enviar os dados que foram coletados atras dos inputs, escolhi formFata pois 
+  é recomendado ao manipular imagens*/
 
     useEffect(() =>{
       const handleUsers = async ()=>{
@@ -50,6 +57,7 @@ export default function Home(){
       }
       handleUsers()
     },[])
+    //executa ao iniciar a pagina, a função executada tem como objetivo obter os dados dos usuarios
 
   return(
     <div>
@@ -68,7 +76,7 @@ export default function Home(){
         <img src={`http://localhost:3000/user/pfp/${id}`} />
         </div>
       ))}
-
+      {/*mapeamento dos usuarios*/}
     </div>
   )
 }
