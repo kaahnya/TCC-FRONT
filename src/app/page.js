@@ -1,95 +1,74 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+
+export default function Home(){
+  const [users, setUsers] = useState([])
+  const [values, setValues] = useState(
+    {name:'', cpf:'', email:'', password:'', desc:'', pfp:null, banner:null}
+  )
+
+  const getUsers = async () =>{
+    const response = await axios.get("http://localhost:3000/users")
+    return response.data
+  }
+
+  const handleInputChange = (event) => {
+    if(event.target.type==='file'){
+      setValues((prevValue) => ({
+        ...prevValue, [event.target.name] : event.target.files?.[0]
+      }))
+    } else{
+      setValues((prevValue) => ({
+        ...prevValue, [event.target.name] : event.target.value
+      }))
+    }
+  }
+
+  const handleSubmit = async () => {
+    const formData = new FormData()
+
+    formData.append('name', values.name)
+    formData.append('cpf', values.cpf)
+    formData.append('email', values.email)
+    formData.append('password', values.password)
+    formData.append('desc', values.desc)
+    formData.append('pfp', values.pfp)
+    formData.append('banner', values.banner)
+
+    const response = await axios.post("http://localhost:3000/user", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } 
+
+    useEffect(() =>{
+      const handleUsers = async ()=>{
+        setUsers( await getUsers())
+      }
+      handleUsers()
+    },[])
+
+  return(
+    <div>
+      <input id='name' name='name' onChange={handleInputChange}/>
+      <input id='cpf' name='cpf' onChange={handleInputChange}/>
+      <input id='email' name='email' onChange={handleInputChange}/>
+      <input id='password' name='password' onChange={handleInputChange}/>
+      <input id='desc' name='desc' onChange={handleInputChange}/>
+      <input id='pfp' name='pfp' type='file' onChange={handleInputChange}/>
+      <input id='banner' name='banner' type='file' onChange={handleInputChange}/>
+
+      <button onClick={handleSubmit}>enviar</button>
+
+      {users.map(({id, name, email, cpf, desc, password}) => (
+        <div key={id}>{name}
+        <img src={`http://localhost:3000/user/pfp/${id}`} />
         </div>
-      </div>
+      ))}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    </div>
+  )
 }
