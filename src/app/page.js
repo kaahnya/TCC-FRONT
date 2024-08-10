@@ -5,6 +5,8 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 //para mandar requisições ao back utilizei a biblioteca axios
 import './css/page.css';
+import Image from "next/image";
+import img from './img/adobe.jpg';
 import Menu from "../../componentes/menu/menu.js";
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -72,15 +74,25 @@ export default function Home(){
   return(
   <div><Menu></Menu>
     <div className='container'>
-      <input id='nome' name='nome' onChange={handleInputChange} placeholder='NOME'/>
-      <input id='cpf' name='cpf' onChange={handleInputChange} placeholder='CPF'/>
-      <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL'/>
-      <input id='senha' name='senha' onChange={handleInputChange} placeholder='SENHA'/>
-      <input id='desc' name='desc' onChange={handleInputChange} placeholder='DESCRIÇÃO'/>
-      <input id='pfp' name='pfp' type='file' onChange={handleInputChange} placeholder='FOTO'/>
-      <input id='banner' name='banner' type='file' onChange={handleInputChange} placeholder='BANNER'/>
-
-      <button onClick={handleSubmit}>enviar</button>
+      <div className='e'><Image src={img}/></div>
+        <div className='d'>
+          <h1>Cadastre-se</h1>
+          <div className='input'>
+        <input id='nome' name='nome' onChange={handleInputChange} placeholder='NOME'className='input1'/>
+        <input id='cpf' name='cpf' onChange={handleInputChange} placeholder='CPF' className='input1'/>
+          </div>
+        <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL'/>
+        <input id='senha' name='senha' onChange={handleInputChange} placeholder='SENHA'/>
+        <input id='desc' name='desc' onChange={handleInputChange} placeholder='DESCRIÇÃO'/>
+           <div classname ="buttonsUp">
+           <input type="file" id="pfp" name="pfp" onChange={handleInputChange} className='foto' />
+           <label for="pfp" className='buttonUp'>FOTO</label>
+           <input type="file" id="banner" name="banner" onChange={handleInputChange} className='foto'/>
+           <label for="banner" className='buttonUp'>BANNER</label>
+           </div>
+          <button onClick={handleSubmit}>Cadastrar</button>
+        <p>Já possui uma conta?<a href='/login'> Login</a></p>
+        </div>
     </div>
   </div>
   )

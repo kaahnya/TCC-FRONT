@@ -5,20 +5,17 @@ body {
   }
   
   .container {
-    width: 100%; 
-    display: block;
+    width: 800px; 
+    display: flex;
     margin: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
   }
-  
-  input {
-    display: block;
-    margin: auto;
-    margin-bottom: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px; 
-  }
+
+img{
+  width: 100%;
+  height: 100%;
+}
   
   button {
     display: block;
@@ -36,11 +33,112 @@ body {
   button:hover {
     background-color: #0056b3;
   }
+
+.e{
+
+  width: 550px;
+  height: 520px;
+}
+
+.d{
+
+  width: 450px;
+  height: 520px;
+}
+
+.input{
+    display: flex;
+}
+
+.input1 {
+  display: block;
+  margin: auto;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 125px; 
+}
+
+input {
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 310px; 
+}
+
+h1{
+  text-align: center;
+}
+label{
+  display: inline-block;
+  background-color: rgb(47, 50, 189);
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.buttonsUp{
+ display: flex;
+}
   
-  img {
-    margin-top: 25px;
-    max-width: 50px;
-    height: auto;
-    margin-left: 10px;
-    border-radius: 50%;
-  }
+.buttonUp{
+  text-align: center;
+  justify-content: center;
+  width: 70px;
+  margin-left: 60px;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.foto{
+  display: none;
+}
+
+p{
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  margin-top: 20px;
+}
+
+.ec{
+  width: 100%;
+  height: 200px;
+}
+
+.dc{
+  margin: auto;
+  width: 450px;
+  height: 230px;
+}
+
+.containerc {
+  width: 500px; 
+  margin: auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+}
+
+.input2 {
+  display: block;
+  margin: auto;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 170px; 
+}

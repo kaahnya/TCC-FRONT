@@ -5,13 +5,15 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 //para mandar requisições ao back utilizei a biblioteca axios
 import './../css/page.css';
+import Image from "next/image";
+import img from '../img/adobe1.jpg';
 import Menu from "../../../componentes/menu/menu.js";
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 export default function Login(){
   const [values, setValues] = useState(
-    {email:'', password:''}
+    {email:'', senha:''}
   )
 
   const route=useRouter()
@@ -23,7 +25,7 @@ export default function Login(){
   }
 
   const handleSubmit = async () => {
-    const response = await axios.post("http://localhost:3000/login",{email : values.email, senha: values.password})
+    const response = await axios.post("http://localhost:3000/login",{email : values.email, senha: values.senha})
 
 
     if(response.data!=401){
@@ -35,11 +37,19 @@ export default function Login(){
   }
 
   return(
-    <div className='container'><Menu></Menu>
-      <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL'/>
-      <input id='password' name='password' onChange={handleInputChange} placeholder='SENHA'/>
-
-      <button onClick={handleSubmit}>enviar</button>
+    <div><Menu></Menu>
+    <div className='containerc'>
+      <div className='ec'><Image src={img}/></div>
+        <div className='dc'>
+          <h1>Entre</h1>
+          <div className='input'>
+          <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL' className='input2'/>
+          <input id='senha' name='senha' onChange={handleInputChange} placeholder='SENHA' className='input2'/>
+          </div>
+          <button onClick={handleSubmit}>Logar</button>
+        <p>Não possui uma conta?<a href='/'> Cadastrar-se</a></p>
+        </div>
     </div>
+  </div>
   )
 }

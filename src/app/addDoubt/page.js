@@ -6,27 +6,12 @@ import axios from 'axios';
 //para mandar requisições ao back utilizei a biblioteca axios
 import '../css/page.css';
 import Menu from "../../../componentes/menu/menu.js";
-import {formatRelative} from 'date-fns';
 
-export default function duvida(){
-  const [duvidas, setDuvidas] = useState([])
+export default function Doubt(){
+  const [users, setUsers] = useState([])
   const [values, setValues] = useState(
-    {titulo:'', materia:'', conteudo:'', descDuvida:'', duvida:null, usuarioId:''}
+    {titulo:'', materia:'', conteudo:'', data:'', doubt:null, userId:''}
   )
-
-  const getDuvidas = async () =>{
-    const response = await axios.get("http://localhost:3000/duvidas")
-    return response.data
-  }
-  //obter os usuarios atraves da biblioteca axios
-  const date = new Date();
-    useEffect(() =>{
-      const handleDuvidas = async ()=>{
-        setDuvidas( await getDuvidas())
-      }
-      handleDuvidas()
-    },[])
-    //executa ao iniciar a pagina, a função executada tem como objetivo obter os dados dos usuarios
 
   const handleInputChange = (event) => {
     if(event.target.type==='file'){
@@ -48,11 +33,11 @@ export default function duvida(){
     formData.append('titulo', values.titulo)
     formData.append('materia', values.materia)
     formData.append('conteudo', values.conteudo)
-    formData.append('descDuvida', values.descDuvida)
-    formData.append('duvida', values.duvida)
-    formData.append('usuarioId', values.usuarioId)
+    formData.append('data', values.data)
+    formData.append('doubt', values.doubt)
+    formData.append('userId', values.userId)
 
-    const response = await axios.post("http://localhost:3000/duvida", formData, {
+    const response = await axios.post("http://localhost:3000/doubt", formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -64,24 +49,13 @@ export default function duvida(){
   return(
   <div><Menu></Menu>
     <div className='container'>
-      <input id='usuarioId' name='usuarioId' onChange={handleInputChange}/>
+      <input id='userId' name='userId' onChange={handleInputChange}/>
       <input id='titulo' name='titulo' onChange={handleInputChange} placeholder='TITULO'/>
       <input id='materia' name='materia' onChange={handleInputChange} placeholder='MATERIA'/>
       <input id='conteudo' name='conteudo' onChange={handleInputChange} placeholder='CONTEUDO'/>
-      <input id='descDuvida' name='descDuvida' onChange={handleInputChange} placeholder='DUVIDA'/>
-      <input id='duvida' name='duvida' type='file' onChange={handleInputChange} placeholder='FOTO'/>
+      <input id='doubt' name='doubt' type='file' onChange={handleInputChange} placeholder='FOTO'/>
 
       <button onClick={handleSubmit}>enviar</button>
-
-      {duvidas.map(({id, titulo, conteudo, materia, descDuvida, createdAt}) => (
-        <div key={id}>
-        <img src={`http://localhost:3000/duvida/img/${id}`} />
-        {titulo} - {formatRelative(
-         createdAt,
-          date
-          )}
-        </div>
-      ))}
 
     </div>
   </div>
