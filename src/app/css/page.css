@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
     margin: 0;
   }
   
@@ -10,6 +9,7 @@ body {
     margin: auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     margin-top: 50px;
+    height: 520px;
   }
 
 img{
@@ -17,7 +17,7 @@ img{
   height: 100%;
 }
   
-  button {
+  .button {
     display: block;
     margin: auto;
     width: 312px; 
@@ -30,7 +30,7 @@ img{
   }
 
   
-  button:hover {
+  .button:hover {
     background-color: #0056b3;
   }
 
@@ -142,3 +142,146 @@ button{
   border-radius: 15px;
   width: 170px; 
 }
+
+@keyframes fade-out{
+  0%{opacity: 0;
+  }
+}
+
+.container{
+  animation: fade-out 2s;
+}
+
+.containerc{
+  animation: fade-out 2s;
+}
+
+.containerd {
+  width: 500px; 
+  margin: auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+}
+
+.inputd{
+  display: flex;
+}
+
+.input1d {
+display: block;
+margin: auto;
+margin-top: 10px;
+margin-bottom: 25px;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 15px;
+width: 195px; 
+}
+
+.inputdd {
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 445px; 
+}
+
+.botaod {
+  width: 90px; 
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 15px;
+  height: 39px;
+  margin-top: -5px;
+}
+   
+ .buttonUpd{
+  text-align: center;
+  padding-top: 15px;
+   width: 200px;
+   margin-left: 40px;
+   margin-bottom: 20px;
+   margin-top: -10px;
+   font-weight: bolder;
+   height: 25px;
+ }
+
+ .containera {
+  display: flex;
+  width: 600px; 
+  margin: auto;
+  margin-top: 50px;
+  background-color: whitesmoke;
+}
+
+.em{
+
+  width: 550px;
+  height: 520px;
+}
+
+.dm{
+
+  width: 450px;
+  height: 520px;
+}
+
+.lll{
+  display: flex;
+  height: 100px;
+}
+
+.containerdd{
+  width: 900px; 
+  margin: auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+}
+
+h3{
+  margin-top: 30px;
+  color: #ccc;
+}
+
+.ass{
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 300px; 
+  margin-left: 90px;
+}
+
+.containerddd{
+  display: flex;
+  width: 450px;
+}
+
+.inputdddd{
+  width: 450px;
+  height: 300px;
+}
+
+.inputddddd{
+  width: 450px;
+  height: 300px;
+}
+
+.asss{
+  margin-top: 8px;
+  margin-left: 40px;
+  height: 80px;
+  width: 300px;
+}
+
+.buttonsUpd{
+  display: flex;
+}
+

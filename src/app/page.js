@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 
 export default function Home(){
   const [user, setUsers] = useState([])
+  const [userLog, setUserLog] = useState(null);
   const [values, setValues] = useState(
     {nome:'', cpf:'', email:'', senha:'', desc:'', pfp:null, banner:null}
   )
@@ -71,8 +72,16 @@ export default function Home(){
     },[])
     //executa ao iniciar a pagina, a função executada tem como objetivo obter os dados dos usuarios
 
+    useEffect(() => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        setUserLog(JSON.parse(userData));
+      }
+      console.log(userLog)
+    }, []);
+
   return(
-  <div><Menu></Menu>
+  <div>
     <div className='container'>
       <div className='e'><Image src={img}/></div>
         <div className='d'>
@@ -84,13 +93,13 @@ export default function Home(){
         <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL'/>
         <input id='senha' name='senha' onChange={handleInputChange} placeholder='SENHA'/>
         <input id='desc' name='desc' onChange={handleInputChange} placeholder='DESCRIÇÃO'/>
-           <div classname ="buttonsUp">
+           <div className ="buttonsUp">
            <input type="file" id="pfp" name="pfp" onChange={handleInputChange} className='foto' />
-           <label for="pfp" className='buttonUp'>FOTO</label>
+           <label htmlFor="pfp" className='buttonUp'>FOTO</label>
            <input type="file" id="banner" name="banner" onChange={handleInputChange} className='foto'/>
-           <label for="banner" className='buttonUp'>BANNER</label>
+           <label htmlFor="banner" className='buttonUp'>BANNER</label>
            </div>
-          <button onClick={handleSubmit}>Cadastrar</button>
+          <button onClick={handleSubmit} className="button">Cadastrar</button>
         <p>Já possui uma conta?<a href='/login'> Login</a></p>
         </div>
     </div>

@@ -15,6 +15,7 @@ export default function Login(){
   const [values, setValues] = useState(
     {email:'', senha:''}
   )
+  const [userLog, setUserLog] = useState(null);
 
   const route=useRouter()
 
@@ -28,16 +29,29 @@ export default function Login(){
     const response = await axios.post("http://localhost:3000/login",{email : values.email, senha: values.senha})
 
 
-    if(response.data!=401){
-      toast.success("bem vindo " + response.data.nome)
-      route.push("/users")
+    if(response.data==404){
+      toast.error("email não cadastrado")
     }else if(response.data==401){
       toast.error("ta maluco porra")
+    }else{
+      const { id, nome, pfp, banner } = response.data; 
+      console.log(id, nome, pfp, banner)
+    localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner }));
+      toast.success("bem vindo " + response.data.nome)
+      route.push("/users")
     }
   }
 
+  useEffect( () => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUserLog(JSON.parse(userData));
+     return route.push("/users")
+    }
+  }, []);
+
   return(
-    <div><Menu></Menu>
+    <div>
     <div className='containerc'>
       <div className='ec'><Image src={img}/></div>
         <div className='dc'>
@@ -46,7 +60,7 @@ export default function Login(){
           <input id='email' name='email' onChange={handleInputChange} placeholder='EMAIL' className='input2'/>
           <input id='senha' name='senha' onChange={handleInputChange} placeholder='SENHA' className='input2'/>
           </div>
-          <button onClick={handleSubmit}>Logar</button>
+          <button onClick={handleSubmit} className="button">Logar</button>
         <p>Não possui uma conta?<a href='/'> Cadastrar-se</a></p>
         </div>
     </div>

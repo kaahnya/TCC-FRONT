@@ -13,6 +13,7 @@ export default function duvida(){
   const [values, setValues] = useState(
     {titulo:'', materia:'', conteudo:'', descDuvida:'', duvida:null, usuarioId:''}
   )
+  const [userLog, setUserLog] = useState(null);
 
   const getDuvidas = async () =>{
     const response = await axios.get("http://localhost:3000/duvidas")
@@ -27,6 +28,15 @@ export default function duvida(){
       handleDuvidas()
     },[])
     //executa ao iniciar a pagina, a função executada tem como objetivo obter os dados dos usuarios
+
+    useEffect(() => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        setUserLog(JSON.parse(userData));
+      }else{
+        return route.push("/login")
+       }
+    }, []);
 
   const handleInputChange = (event) => {
     if(event.target.type==='file'){
@@ -44,12 +54,14 @@ export default function duvida(){
 
   const handleSubmit = async () => {
     const formData = new FormData()
-
+    values.usuarioId = userLog.id
+    console.log(values.usuarioId)
     formData.append('titulo', values.titulo)
     formData.append('materia', values.materia)
     formData.append('conteudo', values.conteudo)
     formData.append('descDuvida', values.descDuvida)
     formData.append('duvida', values.duvida)
+    console.log(values.duvida)
     formData.append('usuarioId', values.usuarioId)
 
     const response = await axios.post("http://localhost:3000/duvida", formData, {
@@ -62,19 +74,30 @@ export default function duvida(){
   é recomendado ao manipular imagens*/
 
   return(
-  <div><Menu></Menu>
-    <div className='container'>
-      <input id='usuarioId' name='usuarioId' onChange={handleInputChange}/>
-      <input id='titulo' name='titulo' onChange={handleInputChange} placeholder='TITULO'/>
-      <input id='materia' name='materia' onChange={handleInputChange} placeholder='MATERIA'/>
-      <input id='conteudo' name='conteudo' onChange={handleInputChange} placeholder='CONTEUDO'/>
-      <input id='descDuvida' name='descDuvida' onChange={handleInputChange} placeholder='DUVIDA'/>
-      <input id='duvida' name='duvida' type='file' onChange={handleInputChange} placeholder='FOTO'/>
-
-      <button onClick={handleSubmit}>enviar</button>
-
+<div><Menu></Menu>
+  <div className='containerdd'>
+    <div className='lll'>
+     <div className='em'><h1 className='du'>Compartilhar Dúvida</h1></div>
+      <div className='dm'><h3 className='du'>AJSBNUDFIEHIJNCFASEA</h3></div>
+    </div>
+    <div className='containerddd'>
+       <div className='inputdddd'>
+       <input id='materia' name='materia' onChange={handleInputChange} placeholder='MATÉRIA' className='ass'/>
+       <input id='conteudo' name='conteudo' onChange={handleInputChange} placeholder='CONTEÚDO' className='ass'/>
+       <input id='titulo' name='titulo' onChange={handleInputChange} placeholder='TÍTULO' className='ass'/>
+       </div>
+       <div className='inputddddd'>
+      <input id='descDuvida' name='descDuvida' onChange={handleInputChange} placeholder='DESCRIÇÃO DA DÚVIDA' className='asss'/>
+         <div className ="buttonsUpd">
+           <input type="file" id="duvida" name="duvida" onChange={handleInputChange} className='foto' />
+           <label htmlFor="duvida" className='buttonUpd'>ADICIONAR ARQUIVO</label>
+           <button onClick={handleSubmit} className='botaod'>ENVIAR</button>
+         </div>
+       </div>
+    </div>
+    <hr/>
       {duvidas.map(({id, titulo, conteudo, materia, descDuvida, createdAt}) => (
-        <div key={id}>
+        <div key={id} className='containera'>
         <img src={`http://localhost:3000/duvida/img/${id}`} />
         {titulo} - {formatRelative(
          createdAt,
@@ -83,7 +106,7 @@ export default function duvida(){
         </div>
       ))}
 
-    </div>
   </div>
+</div>
   )
 }
