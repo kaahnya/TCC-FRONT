@@ -7,6 +7,8 @@ import axios from 'axios';
 import '../css/page.css';
 import Menu from "../../../componentes/menu/menu.js";
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+
 
 export default function Users(){
   const [users, setUsers] = useState([])
@@ -37,14 +39,39 @@ export default function Users(){
        }
     }, []);
 
+    const handleDelete = async (event) => {
+      const id = event.target.dataset.userId
+  
+      const response = await axios.delete(`http://localhost:3000/usuario/${id}`, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      if(response){
+        console.log(response)
+        toast.success(" usuario " + response.data.nome + " foi deletado com sucesso ")
+        setUsers( await getUsers())
+      }
+    }
+
   return(
-  <div><Menu></Menu>
-      {users.map(({id, nome, email, cpf, desc, senha}) => (
-        <div key={id}>
-        <img src={`http://localhost:3000/usuario/pfp/${id}`} className='user'/>
-        {nome}
+  <div className='usuario'><Menu></Menu>
+  <div className='quadrado'>
+      {users.map(({id, nome, email, cpf, desc, senha, pfp}) => (
+        <div key={id} className='usersdiv'>
+          <div className='fn'>
+        <img src={`http://localhost:3000/usuario/pfp/${id}`} className='fotopfp' />
+        <p className='p'>{nome}</p>
+          </div>
+        <div className='botaoo'>
+        <button data-user-id={id} onClick={handleDelete} className='deletar'>Deletar</button>
+        <button className='deletar'><a href={`./alterUser/${id}/`}className='branco'>Atualizar</a></button>
+        </div>
         </div>
       ))}
+  </div>
     </div>
   )
 }
+
+//<img src={`http://localhost:3000/usuario/pfp/${id}`} className='user'/>
