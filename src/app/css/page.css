@@ -208,9 +208,10 @@ width: 195px;
  }
 
  .containera {
-  width: 600px; 
+  width: 800px; 
   margin: auto;
   margin-top: 50px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .em{
@@ -235,6 +236,7 @@ width: 195px;
   margin: auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin-top: 50px;
+  height: 400px;
 }
 
 h3{
@@ -279,10 +281,11 @@ h3{
 }
 
 .coment{
-  width: 700px;
+  width: 600px;
   height: 5px;
   border-radius: 35px;
   margin-top: 5px;
+  margin-left: 60px;
 }
 
 .divcoment{
@@ -296,6 +299,7 @@ h3{
 .buttonUpdd{
     width: 50px;
     margin-top: 3px;
+    margin-left: 13px;
  }
 
 .icon{
@@ -312,6 +316,7 @@ h3{
   cursor: pointer;
   height: 25px;
   margin-top: 5px;
+  margin-left: -20px;
 }
 
 .tduvida{
@@ -375,4 +380,10 @@ h3{
   justify-content: center;
   flex-flow: row wrap;
   width: 80vw;
+}
+
+.containeraa{
+  width: 600px; 
+  margin: auto;
+  border: solid 1px rgb(184, 184, 184);
 }

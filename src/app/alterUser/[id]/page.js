@@ -20,6 +20,7 @@ export default function Home() {
 
   const getUsers = async () => {
     const response = await axios.get("http://localhost:3000/usuario/" + id);
+    console.log(response.data)
     return response.data;
   };
 

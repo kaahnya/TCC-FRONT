@@ -113,7 +113,7 @@ export default function duvida(){
   <div className='containerdd'>
     <div className='lll'>
      <div className='em'><h1 className='du'>Compartilhar Dúvida</h1></div>
-      <div className='dm'><h3 className='du'>AJSBNUDFIEHIJNCFASEA</h3></div>
+      <div className='dm'><h3 className='du'></h3></div>
     </div>
     <div className='containerddd'>
        <div className='inputdddd'>
@@ -134,7 +134,7 @@ export default function duvida(){
       {duvidas.map(({id, titulo, conteudo, materia, descDuvida, createdAt, comentario}) => (
         <div key={id} className='containera'>
           <h1 className='tduvida'>{titulo}{id}</h1>
-        <img src={`http://localhost:3000/duvida/img/${id}`} />
+        <img src={`http://localhost:3000/duvida/img/${id}`} className='fotoduvi' />
         <div className='ttduvida'> {formatRelative(
          createdAt,
           date, { locale: ptBR }
@@ -147,7 +147,7 @@ export default function duvida(){
             </div>
             <div>
             {comentario && comentario.map(({id, texto, resposta, duvidaId, createdAt}) => (
-          <div key={id} className='containera'> 
+          <div key={id} className='containeraa'> 
             {texto}
             {id}
           <img src={`http://localhost:3000/comentario/img/${id}`} />
