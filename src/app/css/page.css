@@ -207,12 +207,8 @@ width: 195px;
    height: 25px;
  }
 
- .containera {
-  width: 800px; 
-  margin: auto;
-  margin-top: 50px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
+
+
 
 .em{
 
@@ -280,17 +276,7 @@ h3{
   display: flex;
 }
 
-.coment{
-  width: 600px;
-  height: 5px;
-  border-radius: 35px;
-  margin-top: 5px;
-  margin-left: 60px;
-}
 
-.divcoment{
-  display: flex;
-}
 
 .fotoo{
   display: none;
@@ -298,11 +284,11 @@ h3{
 
 .buttonUpdd{
     width: 50px;
-    margin-top: 3px;
     margin-left: 13px;
  }
 
 .icon{
+  margin-top:15px;
   width: 30px;
   height: 30px;
 }
@@ -315,13 +301,13 @@ h3{
   border-radius: 10px;
   cursor: pointer;
   height: 25px;
-  margin-top: 5px;
   margin-left: -20px;
+  margin-top:18px
 }
 
 .tduvida{
   text-align: left;
-  margin-left: 15px;
+  margin-bottom:-10px
 }
 
 .ttduvida{
@@ -375,6 +361,8 @@ h3{
   margin-top: 15px;
 }
 
+
+
 .quadrado{
   display: flex;
   justify-content: center;
@@ -382,8 +370,89 @@ h3{
   width: 80vw;
 }
 
-.containeraa{
-  width: 600px; 
-  margin: auto;
+.divcoment{
+  display: flex;
+  padding-top: 10px
+}
+
+.borderComentarios{
+  margin:auto;
+  width: 700px; 
   border: solid 1px rgb(184, 184, 184);
+  padding:10px;
+}
+
+
+.contentComentarios{
+  padding:10px
+}
+
+.inputComent{
+  display: inline
+}
+
+.nomecomentario{
+ margin-left:10px;
+ font-size:15px;
+ font-weight:bolder;
+}
+
+.fotoComentario{
+  width:45px;
+  height:45px;
+  border-radius: 50%
+}
+
+.coment{
+  width: 550px;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding:5px;
+  max-width:550px;
+  height:15px
+}
+
+.textocomentario{
+  margin-left:10px;
+  font-size:15px;
+}
+
+.flex{
+  display:flex
+}
+
+.mt-2{
+  margin-top:3px
+}
+
+.mt{
+  margin-top:8px;
+  margin-left:5px
+}
+
+.conteudomateria{
+  font-size:18px;
+  font-weight:bold;
+  font-style: italic;
+  margin-bottom: 10px;
+  margin-top:10px
+
+}
+
+.ml{
+  margin-left:5px
+}
+
+.containera {
+  width: 800px; 
+  margin: auto;
+  margin-top: 50px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding:20px;
+  border: 1px solid gray;
+}
+
+.imgcomentario{
+  display:block;
+  margin:auto;
 }

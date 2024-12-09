@@ -32,7 +32,7 @@ export default function Login(){
     if(response.data==404){
       toast.error("email não cadastrado")
     }else if(response.data==401){
-      toast.error("ta maluco porra")
+      toast.error("Credências não batem")
     }else{
       const { id, nome, pfp, banner } = response.data; 
       console.log(id, nome, pfp, banner)
