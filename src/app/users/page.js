@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 export default function Users(){
   const [users, setUsers] = useState([])
   const [userLog, setUserLog] = useState(null);
+  const [search, setSearch] = useState('');
 
   const route=useRouter()
 
@@ -52,12 +53,23 @@ export default function Users(){
         toast.success(" usuario " + response.data.nome + " foi deletado com sucesso ")
         setUsers( await getUsers())
       }
-    }
+    } 
+
+    const usuariosFiltrados = users.filter((user) =>
+      user.nome.toLowerCase().includes(search.toLowerCase()) ||
+    user.email.toLowerCase().includes(search.toLowerCase()) || 
+    user.cpf.toLowerCase().includes(search.toLowerCase()) ||
+    user.id.toString().includes(search.toLowerCase())
+    );
 
   return(
   <div className='usuario'><Menu></Menu>
+  <h1>Gestão de Usuários</h1>
+ <div className="buscarDiv">
+ <input name="search" className="buscar" placeholder="Busque por Id, Nome, CPF ou Email" value={search} onChange={(e) => setSearch(e.target.value)}/>
+ </div>
   <div className='quadrado'>
-      {users.map(({id, nome, email, cpf, desc, senha, pfp}) => (
+      {usuariosFiltrados.map(({id, nome, email, cpf, desc, senha, pfp}) => (
         <div key={id} className='usersdiv'>
           <div className='fn'>
         <img src={`http://localhost:3000/usuario/pfp/${id}`} className='fotopfp' />
@@ -74,4 +86,3 @@ export default function Users(){
   )
 }
 
-//<img src={`http://localhost:3000/usuario/pfp/${id}`} className='user'/>

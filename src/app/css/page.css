@@ -446,7 +446,7 @@ h3{
 .containera {
   width: 800px; 
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   padding:20px;
   border: 1px solid gray;
@@ -455,4 +455,54 @@ h3{
 .imgcomentario{
   display:block;
   margin:auto;
+}
+
+.perfil{
+  margin-top:20px;
+  display:flex;
+  justify-content: center
+}
+
+
+.banner{
+  display:block;
+  margin:auto;
+  width:1000px;
+  height:200px
+}
+
+.perfilNome{
+  text-align: center
+}
+
+.buscar{
+  width:400px;
+  padding:10px;
+  font-weight:550;
+}
+
+.buscarDiv{
+  margin-top:100px;
+  justify-content:center;
+  margin-top:10px;
+}
+
+.buscarD{
+  width:900px;
+  padding:10px;
+  font-weight:550
+}
+
+.buscarDd{
+  display:flex;
+  justify-content:center;
+  margin-top:50px;
+}
+
+.fotoduvi{
+  max-height:400px
+}
+
+.titulocoment { 
+  margin-top:-5px
 }
