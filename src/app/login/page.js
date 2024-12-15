@@ -35,7 +35,7 @@ export default function Login(){
       toast.error("Credências não batem")
     }else{
       const { id, nome, pfp, banner, desc } = response.data; 
-    localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner, desc }));
+      localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner, desc }));
       toast.success("bem vindo " + response.data.nome)
       route.push("/users")
     }

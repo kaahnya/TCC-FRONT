@@ -31,7 +31,7 @@ const Menu = () => {
         </li>
         <li title="Gestão de Usuários"><a href="/users" className="search">Gestão de Usuários</a></li>
         <li title="Duvidas"><a href="/duvida" className="pencil">Duvidas</a></li>
-        <li title="contact"><a href="#" className="contact">contact</a></li>
+        <li title="contact"><a href="/monitor" className="contact">contact</a></li>
         <li><button onClick={()=>{localStorage.removeItem('user'); route.push('/login')}} className="fa fa-reply" aria-hidden="true" id='b'></button></li>
       </ul>
 

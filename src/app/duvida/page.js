@@ -98,7 +98,6 @@ export default function duvida() {
     }
   } 
 
-
   const handleSubmitComentario = async (event) => {
     const formData = new FormData()
     valuesComentario.usuarioId = userLog.id
@@ -128,7 +127,6 @@ export default function duvida() {
     }
   }
 
-
   const duvidasFiltradas = duvidas.filter((duvida) =>
     duvida.titulo.toLowerCase().includes(search.toLowerCase()) ||
     duvida.materia.toLowerCase().includes(search.toLowerCase()) ||
@@ -136,8 +134,6 @@ export default function duvida() {
     duvida.conteudo.toLowerCase().includes(search.toLowerCase()) ||
     duvida.id.toString().includes(search.toLowerCase())
   );
-
-
 
   return (
     <div><Menu></Menu>

@@ -58,6 +58,9 @@ export default function Home(){
     });
     if(response){
       toast.success("bem vindo " + response.data.nome)
+      const { id, nome, pfp, banner, desc } = response.data; 
+      localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner, desc }));
+      toast.success("bem vindo " + response.data.nome)
       route.push("/users")
     }
   }
