@@ -180,7 +180,7 @@ export default function duvida() {
                   date, { locale: ptBR }
                 )}</span></div>
             </div>
-            <h1 className='tduvida'>{titulo}</h1>         <button data-duvida-id={id} onClick={handleDelete} className='deletar'>Deletar</button>
+            <h1 className='tduvida'>{titulo}</h1>         {usuario.id == userLog.id || userLog.id ==1 && ( <button data-duvida-id={id} onClick={handleDelete} className='deletar'>Deletar</button>)}
             <div className="conteudomateria">{materia} - {conteudo}</div> 
             <div>{descDuvida}</div>
             {duvidaImg && (<img src={`http://localhost:3000/duvida/img/${id}`} className='fotoduvi' />)}
