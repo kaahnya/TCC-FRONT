@@ -10,6 +10,8 @@ import Icon from "../img/icons.png";
 import { formatRelative } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { Image } from 'next/image';
 
 export default function duvida() {
   const [duvidas, setDuvidas] = useState([])
@@ -93,7 +95,7 @@ export default function duvida() {
     });
     if(response){
       console.log(response)
-      toast.success(" usuario " + response.data.nome + " foi deletado com sucesso ")
+      toast.success("Duvida deletada com sucesso ")
       setDuvidas( await getDuvidas())
     }
   } 
@@ -114,6 +116,10 @@ export default function duvida() {
         'Content-Type': 'multipart/form-data',
       },
     });
+
+    if(response){
+      setDuvidas(await getDuvidas())
+    }
   }
   const handleInputChangeComentario = (event) => {
     if (event.target.type === 'file') {
@@ -195,13 +201,13 @@ export default function duvida() {
                   <button data-duvida-id={id} onClick={handleSubmitComentario} className='botaodd'>➤</button>
                 </div>
                 <br className="mt" />
-                {comentario && comentario.map(({ id, texto, imgComentario, resposta, duvidaId, createdAt, usuario }) => (
+                {comentario && comentario.map(({ id, texto, imgComentario, monitor, duvidaId, createdAt, usuario }) => (
                   <div key={id}>
                     <div className='divcoment '>
                       <img src={`http://localhost:3000/usuario/pfp/${usuario.id}`} className="fotoComentario" />
                       <div classname="inputComent ">
                         <div className="flex">
-                          <div className="nomecomentario mt-2">{usuario.nome}</div>
+                          <div className="nomecomentario mt-2">{usuario.nome} {monitor && (<img src="../img/verificado.png"  className='icon'/>)}</div>
                           <div className='ttduvida mt'> {formatRelative(
                             createdAt,
                             date, { locale: ptBR })}

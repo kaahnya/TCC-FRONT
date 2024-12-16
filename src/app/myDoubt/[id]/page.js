@@ -113,8 +113,8 @@ export default function duvida() {
         <img src={`http://localhost:3000/usuario/pfp/${id}`} className="fotoComentario" />
       </div>
       <div className="perfilNome">
-        <div>{userLog && userLog.nome}</div>
-        <div>{userLog && userLog.desc} </div>
+        <div className="nomeperfil">{userLog && userLog.nome}</div>
+        <div className="descperfil">{userLog && userLog.desc}</div>
       </div>
 
       <div className="buscarDd">
@@ -123,8 +123,8 @@ export default function duvida() {
 
 
       {duvidasFiltradas.length === 0 ?
-        (<div className="no-results">
-          Não encontramos nenhuma dúvida correspondente à sua busca.
+        (<div className="perfilNome">
+          Não encontramos nenhuma dúvida
         </div>) : duvidasFiltradas.map(({ id, titulo, conteudo, materia, descDuvida, usuario, duvidaImg, createdAt, comentario }) => (
           <div key={id} className='containera'>
             <div className='divcoment'>
@@ -152,7 +152,7 @@ export default function duvida() {
                   </div>
                   <div className="iconesComentarios">
                     <input type="file" id="imgComentario" name="imgComentario" onChange={handleInputChangeComentario} className='fotoo'></input>
-                    <label htmlFor="imgComentario" className='buttonUpdd'><img src='./img/icon.png' className='icon' /></label>
+                    <label htmlFor="imgComentario" className='buttonUpdd'><img src='../img/icon.png' className='icon' /></label>
                   </div>
                   <button data-duvida-id={id} onClick={handleSubmitComentario} className='botaodd'>➤</button>
                 </div>

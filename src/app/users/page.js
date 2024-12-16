@@ -77,7 +77,7 @@ export default function Users(){
           </div>
         <div className='botaoo'>
         <button data-user-id={id} onClick={handleDelete} className='deletar'>Deletar</button>
-        <button className='deletar'><a href={`./alterUser/${id}/`}className='branco'>Atualizar</a></button>
+        <button className='deletar'><a href={`./alterUser/${id}/`} className='branco'>Atualizar</a></button>
         </div>
         </div>
       ))}

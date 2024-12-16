@@ -30,7 +30,7 @@ export default function Login(){
 
 
     if(response.data==404){
-      toast.error("email não cadastrado")
+      toast.error("Email não cadastrado")
     }else if(response.data==401){
       toast.error("Credências não batem")
     }else{

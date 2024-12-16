@@ -475,6 +475,14 @@ h3{
   text-align: center
 }
 
+.nomeperfil{
+  font-size: 24px
+}
+
+.descperfil{
+  font-size: 20px
+}
+
 .buscar{
   width:400px;
   padding:10px;
@@ -505,4 +513,13 @@ h3{
 
 .titulocoment { 
   margin-top:-5px
+}
+
+.mr {
+  margin-right:5px
+}
+
+.monitorBorder{
+  border: 1px solid black;
+  padding: 20px
 }

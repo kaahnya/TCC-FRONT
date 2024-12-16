@@ -11,6 +11,7 @@ import Menu from "../../componentes/menu/menu.js";
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
+
 export default function Home(){
   const [user, setUsers] = useState([])
   const [userLog, setUserLog] = useState(null);
@@ -51,19 +52,32 @@ export default function Home(){
     formData.append('pfp', values.pfp)
     formData.append('banner', values.banner)
 
-    const response = await axios.post("http://localhost:3000/usuario", formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    if(response){
-      toast.success("bem vindo " + response.data.nome)
-      const { id, nome, pfp, banner, desc } = response.data; 
-      localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner, desc }));
-      toast.success("bem vindo " + response.data.nome)
-      route.push("/users")
-    }
+    try {
+      const response = await axios.post("http://localhost:3000/usuario", formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+          },
+      });
+
+      if (response) {
+          const { id, nome, desc } = response.data;
+          localStorage.setItem('user', JSON.stringify({ id, nome, desc }));
+          toast.success("Bem vindo " + response.data.nome);
+          route.push("/users");
+      }
+  } catch (error) {
+      if (error.response) {
+          if (error.response.status === 400) {
+              toast.warning(error.response.data.message);
+          } else {
+              toast.error("Erro ao criar usuário. Por favor, tente novamente.");
+          }
+      } else {
+          console.error("Erro desconhecido:", error);
+          toast.error("Erro de conexão com o servidor.");
+      }
   }
+};
   /*utilizei o formData para enviar os dados que foram coletados atras dos inputs, escolhi formFata pois 
   é recomendado ao manipular imagens*/
 
