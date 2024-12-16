@@ -15,7 +15,7 @@ export default function Users(){
   const [userLog, setUserLog] = useState(null);
   const [search, setSearch] = useState('');
 
-  const route=useRouter()
+  const route = useRouter()
 
   const getUsers = async () =>{
     const response = await axios.get("http://localhost:3000/usuarios")
@@ -30,16 +30,17 @@ export default function Users(){
       handleUsers()
     },[])
     //executa ao iniciar a pagina, a função executada tem como objetivo obter os dados dos usuarios
-
     useEffect(() => {
       const userData = localStorage.getItem('user');
       if (userData) {
+        if (JSON.parse(userData).id !== 1) {
+          return route.push('/duvida');
+        }
         setUserLog(JSON.parse(userData));
-      }else{
-        return route.push("/login")
-       }
+      } else {
+        return route.push("/login");
+      }
     }, []);
-
     const handleDelete = async (event) => {
       const id = event.target.dataset.userId
   

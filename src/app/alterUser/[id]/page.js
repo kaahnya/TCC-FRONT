@@ -54,7 +54,7 @@ export default function Home() {
     });
     if (response) {
       toast.success("Alteração feita com sucesso " + response.data.nome);
-      route.push("/users");
+      route.push("/duvida");
     }
   };
 

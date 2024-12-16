@@ -63,7 +63,7 @@ export default function Home(){
           const { id, nome, desc } = response.data;
           localStorage.setItem('user', JSON.stringify({ id, nome, desc }));
           toast.success("Bem vindo " + response.data.nome);
-          route.push("/users");
+          route.push("/duvida");
       }
   } catch (error) {
       if (error.response) {

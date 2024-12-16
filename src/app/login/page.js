@@ -37,7 +37,7 @@ export default function Login(){
       const { id, nome, pfp, banner, desc } = response.data; 
       localStorage.setItem('user', JSON.stringify({ id, nome, pfp, banner, desc }));
       toast.success("bem vindo " + response.data.nome)
-      route.push("/users")
+      route.push("/duvida")
     }
   }
 
@@ -45,7 +45,7 @@ export default function Login(){
     const userData = localStorage.getItem('user');
     if (userData) {
       setUserLog(JSON.parse(userData));
-     return route.push("/users")
+     return route.push("/duvida")
     }
   }, []);
 

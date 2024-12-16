@@ -124,6 +124,7 @@ export default function Monitores() {
       <div>
 
       </div>
+      {userLog && userLog.id == 1 && (<h2>Monitores</h2>) }
       <div className='quadrado'>
         {usuariosFiltrados.map(({ id, nome, email, cpf, desc, senha, pfp, materia }) => (
           <div key={id} className='monitoresdiv'>
